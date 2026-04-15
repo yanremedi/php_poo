@@ -20,6 +20,11 @@ class Conta
         return $this->saldo;
     }
 
+    protected function setSaldo($novoSaldo)
+    {
+        $this->saldo = $novoSaldo;
+    }
+
     function creditar($valor)
     {
         $this->saldo = $this->saldo + $valor;
@@ -57,7 +62,8 @@ class Poupanca extends Conta
 
     function atualizarJuros()
     {
-        $this->saldo = $this->saldo * (1 + $this->juros);
+    $novoSaldo = $this->getSaldo() * (1 + $this->juros);
+    $this->setSaldo($novoSaldo);    
     }
 }
 
